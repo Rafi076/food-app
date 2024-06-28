@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "162261285833",
+    "project_id": "barcodedelivery-437a6",
+    "storage_bucket": "barcodedelivery-437a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162261285833:android:643f73500ec55d64154618",
+        "android_client_info": {
+          "package_name": "com.example.food_pandas_food_delivery_app_with_backend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB8-dJx-rrBX_TIh5donlQIFaCgJCTZfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

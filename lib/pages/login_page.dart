@@ -1,9 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:food_pandas_food_delivery_app_with_backend/components/my_button.dart';
 import 'package:food_pandas_food_delivery_app_with_backend/components/my_textfield.dart';
+import 'package:food_pandas_food_delivery_app_with_backend/services/auth/auth_service.dart';
 
-import 'home_page.dart';
-// import 'package:fooddelivtute/components/my_textfield.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
@@ -19,17 +20,34 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passworcontroller = TextEditingController();
 
   // login method
-  void login() {
-    /*
-     fill out authentication here...
-     */
-    // Nevigate to home page
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-    );
+  void login() async {
+    // get instance of auth service
+    final _authService = AuthService();
+
+    // try sign in
+    try {
+      await _authService.signInWithEmailPassword(
+          emailcontroller.text, passworcontroller.text);
+    }
+
+    // display any error
+    catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: Text(e.toString()),
+              ));
+    }
+  }
+
+  // forgot password
+  void forgotpw() {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              backgroundColor: Theme.of(context).colorScheme.background,
+              title: const Text("User tapped forgot passwrod"),
+            ));
   }
 
   @override
@@ -42,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             // logo
             Icon(
-              Icons.restaurant,
+              Icons.local_pharmacy_outlined,
               size: 100,
               color: Theme.of(context).colorScheme.inversePrimary,
             ),
@@ -75,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
             // password textfiled
             MyTextField(
               controller: passworcontroller,
-              hintText: "Password",
+              hintText: "Licences Number ",
               obscureText: true,
             ),
 
@@ -83,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 25,
             ),
             //sign in button
-            myButton(text: "Sign in", onTap: login),
+            myButton(onTap: login, text: "Login"),
 
             const SizedBox(
               height: 25,

@@ -3,7 +3,7 @@ import 'package:food_pandas_food_delivery_app_with_backend/pages/login_page.dart
 import 'package:food_pandas_food_delivery_app_with_backend/pages/register_page.dart';
 
 class LoginOrRegister extends StatefulWidget {
-  const LoginOrRegister({Key? key});
+  const LoginOrRegister({super.key});
 
   @override
   State<LoginOrRegister> createState() => _LoginOrRegisterState();

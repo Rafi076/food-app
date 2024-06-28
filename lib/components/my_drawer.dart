@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:food_pandas_food_delivery_app_with_backend/components/my_drawer_title.dart';
 import 'package:food_pandas_food_delivery_app_with_backend/pages/settings_page.dart';
+import 'package:food_pandas_food_delivery_app_with_backend/services/auth/auth_service.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
+
+  void logout() {
+    final authService = AuthService();
+    authService.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,33 +62,10 @@ class MyDrawer extends StatelessWidget {
           MyDrawerTitle(
             text: "Logout",
             icon: Icons.logout,
-            onTap: () async {
-              bool confirmLogout = await showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text("Logout"),
-                  content: const Text("Do you want to logout from this app?"),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, false),
-                      child: const Text("No"),
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, true),
-                      child: const Text("Yes"),
-                    ),
-                  ],
-                ),
-              );
-
-              if (confirmLogout == true) {
-                // Perform logout actions here
-                // For example, navigate to the login page
-              } else {
-                // User chose not to logout
-                // Navigate to drawer again
-              }
-            },
+            onTap: () {
+              logout();
+              Navigator.pop(context);
+            }
           ),
           const SizedBox(height: 25),
         ],
