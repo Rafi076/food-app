@@ -17,3 +17,4 @@ samples, guidance on mobile development, and a full API reference.
 # preliminary-food-app
 # first-food-app
 #  emulator-recording: https://www.linkedin.com/feed/update/urn:li:activity:7196818671116189698/
+https://www.youtube.com/watch?v=rHIFJo4IbOE&list=LL&index=17
